@@ -1,0 +1,99 @@
+{
+  "name": "custom.remote.python.vista",
+  "version": "0.4",
+  "type": "python",
+  "entity": "CUSTOM_DEVICE",
+  "metricGroup": "Vista",
+  "processTypeNames": ["PYTHON"],
+  "technologies": ["Custom Technology"],
+  "favicon": "https://community.intersystems.com/sites/default/files/inline/images/cache_logo.png",
+  "source": {
+    "package": "vista",
+    "className": "VistaPlugin",
+    "install_requires": ["requests>=2.6.0", "beautifulsoup4", "lxml"],
+    "activation": "Remote"
+  },
+  "metrics": [
+    {
+      "entity": "CUSTOM_DEVICE",
+      "timeseries": {
+        "key": "Local",
+        "unit": "Count",
+        "displayname": "Local"
+      }
+    },
+    {
+      "entity": "CUSTOM_DEVICE",
+      "timeseries": {
+        "key": "Distributed",
+        "unit": "Count",
+        "displayname": "Distributed"
+      }
+    }
+  ],
+    "properties" : [
+    {
+	  "key" : "url",
+      "type" :  "String"
+    }
+  ],
+  "configUI": {
+        "displayName": "ActiveGate Vista Extension",
+        "properties": [
+			{"key" : "url",
+			"displayName" :  "URL",
+			"displayHint": "http://localhost:8769" }
+	  ]
+    },
+     "ui": {
+       "keymetrics" : [
+      {
+        "key": "Local",
+        "aggregation": "avg",
+        "mergeaggregation": "avg",
+        "displayname": "Local"
+      },
+      {
+        "key": "Distributed",
+        "aggregation": "avg",
+        "mergeaggregation": "avg",
+        "displayname": "Distributed"
+      }
+    ],
+        "charts": [
+            {
+                "group": "License Usage",
+                "title": "Vista License Usage",
+                "description": "Visa License Usage",
+                "explanation": "Not used",
+                "link": "Visa License Usage",
+                "series": [
+                    {
+                        "key": "Local",
+                        "displayname": "Local",
+                        "aggregation": "avg",
+                        "mergeaggregation": "avg",
+                        "color": "#00a6fb",
+                        "seriestype": "line",
+                        "rightaxis": false,
+                        "stacked": false,
+                        "unit": "Count",
+                        "metricexplanation": "Not used"
+                    },
+                    {
+                        "key": "Distributed",
+                        "displayname": "Distributed",
+                        "aggregation": "avg",
+                        "mergeaggregation": "avg",
+                        "color": "#008cdb",
+                        "seriestype": "line",
+                        "rightaxis": false,
+                        "stacked": false,
+                        "unit": "Count",
+                        "metricexplanation": "Not used"
+                    }
+                ]
+            }
+        ]
+    }
+}
